@@ -3,8 +3,8 @@
 作成日時：2021年8月4日<br>
 作成者：森、今野、久保寺
 
-## 使うもの 
-- Raspberry　Pi 3B(RaspberryPi OS)
+## 準備するもの
+- Raspberry Pi 3B(RaspberryPi OS)
 - ICカードリーダー（RC-S380）
 
 - LabNotification.py<br>
