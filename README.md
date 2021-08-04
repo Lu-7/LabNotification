@@ -9,7 +9,7 @@
 - ICカードリーダー（RC-S380）
 
 - LabNotification.py<br>
-Pythonのプログラム
+Pythonのプログラム<br>
 - member_list.csv<br>
 研究室メンバーのリスト
 
