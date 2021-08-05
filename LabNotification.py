@@ -7,6 +7,8 @@ import time
 import csv
 import json
 import requests
+from display import display
+
 
 class Notify:
     def __init__(self):
@@ -14,6 +16,7 @@ class Notify:
         self.service_code = 0x200B #service code
         self.clf = nfc.ContactlessFrontend('usb')
         self.read_mem_list()
+        self.display = display()
         self.run()
 
     def on_connect_nfc(self, tag):
@@ -27,10 +30,12 @@ class Notify:
                 for i in range(len(self.memlist)):
                     if sid == self.memlist[i][0]:
                         if(self.memlist[i][2]=="0"):
+                            self.display.show(''.join(sid), "entry")
                             print("{} 入室".format(self.memlist[i][1]))
                             self.ifttt_post(str(self.memlist[i][1]), "入室")
                             self.memlist[i][2]="1"
                         else:
+                            self.display.show(''.join(sid), "exit"
                             print("{} 退室".format(self.memlist[i][1]))
                             self.ifttt_post(str(self.memlist[i][1]), "退室")
                             self.memlist[i][2]="0"
@@ -64,6 +69,7 @@ class Notify:
         while True:
             self.clf.connect(rdwr={'on-connect': self.on_connect_nfc})
             time.sleep(5)
+            self.display.show("","")
   
 if __name__ == "__main__":
     Notify()
